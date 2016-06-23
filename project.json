@@ -1,7 +1,9 @@
+
 {
   "name": "v100it-website",
   "description": "project for lambdas used by the vision 100 it website",
   "memory": 128,
   "timeout": 5,
-  "role": "arn:aws:iam::307941427260:role/lambda_basic_execution"
+  "role": "arn:aws:iam::307941427260:role/v100it-website_lambda_function",
+  "environment": {}
 }
