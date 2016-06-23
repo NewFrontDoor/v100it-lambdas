@@ -1,0 +1,22 @@
+{
+  "name": "v100it-lambdas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vision100IT/v100it-lambdas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vision100IT/v100it-lambdas/issues"
+  },
+  "homepage": "https://github.com/Vision100IT/v100it-lambdas#readme",
+  "devDependencies": {
+    "xo": "^0.15.1"
+  }
+}
