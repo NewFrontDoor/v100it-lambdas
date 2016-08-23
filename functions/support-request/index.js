@@ -1,19 +1,18 @@
-var AWS = require('aws-sdk');
-var nodemailer = require('nodemailer');
-var sesTransport = require('nodemailer-ses-transport');
+import AWS from 'aws-sdk';
+import nodemailer from 'nodemailer';
+import sesTransport from 'nodemailer-ses-transport';
 
-exports.handle = function (event, context) {
+export default function (event, context) {
 	console.log('incoming: ', event);
 
-	var ses = new AWS.SES();
-	var transport = nodemailer.createTransport(sesTransport({
-		ses: ses
+	var transporter = nodemailer.createTransport(sesTransport({
+		ses: new AWS.SES()
 	}));
 
 	transporter.sendMail({
-		from: 'supportrequest@vision100it.org',
-		to: 'x@mail.asana.com',
-		subject: 'Support request from ' + event.email
+		from: 'jonno@vision100it.org',
+		to: 'x+84417606348384@mail.asana.com',
+		subject: 'Support request from ' + event.email,
 		text: [
 			'Name: ' + event.name,
 			'Organisation: ' + event.organisation,
@@ -28,4 +27,4 @@ exports.handle = function (event, context) {
 			'Additional details: ' + event.additional
 		].join('\n')
 	}, context.done);
-};
+}

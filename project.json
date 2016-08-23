@@ -5,5 +5,11 @@
   "memory": 128,
   "timeout": 5,
   "role": "arn:aws:iam::307941427260:role/v100it-website_lambda_function",
-  "environment": {}
+  "environment": {},
+	"runtime": "nodejs",
+	"handler": "main.default",
+	"hooks": {
+		"build": "../../node_modules/.bin/browserify --node --exclude aws-sdk -s default -t babelify -o main.js index.js",
+		"clean": "rm -f main.js"
+	}
 }

@@ -1,13 +1,12 @@
-var AWS = require('aws-sdk');
-var nodemailer = require('nodemailer');
-var sesTransport = require('nodemailer-ses-transport');
+import AWS from 'aws-sdk';
+import nodemailer from 'nodemailer';
+import sesTransport from 'nodemailer-ses-transport';
 
-exports.handle = function (event, context) {
+export default function (event, context) {
 	console.log('incoming: ', event);
 
-	var ses = new AWS.SES();
 	var transporter = nodemailer.createTransport(sesTransport({
-		ses: ses
+		ses: new AWS.SES()
 	}));
 
 	transporter.sendMail({
@@ -22,4 +21,4 @@ exports.handle = function (event, context) {
 			'Message: ' + event.message
 		].join('\n')
 	}, context.done);
-};
+}

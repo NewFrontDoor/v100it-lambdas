@@ -10,16 +10,13 @@ export default function (event, context) {
 	}));
 
 	transporter.sendMail({
-		from: 'jonno@vision100it.org',
-		to: 'x+84417606348384@mail.asana.com',
-		subject: 'Feature request from ' + event.email,
+		replyTo: event.email,
+		from: 'mailinglist@vision100it.org',
+		to: 'mailinglist@vision100it.org',
+		subject: 'Mailing list ' + event.email,
 		text: [
 			'Name: ' + event.name,
-			'organisation: ' + event.organisation,
-			'Email: ' + event.email,
-			'Url: ' + event.url,
-			'Type: ' + event.type,
-			'Description: ' + event.description
+			'Email: ' + event.email
 		].join('\n')
 	}, context.done);
 }
