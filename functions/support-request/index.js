@@ -18,7 +18,7 @@ export default function (event, context) {
 			'Organisation: ' + event.organisation,
 			'Email: ' + event.email,
 			'Url: ' + event.url,
-			'Type: ' + event.type,
+			'Request Type: ' + event.requestType,
 			'Severity: ' + event.severity,
 			'Summary: ' + event.summary,
 			'Details: ' + event.details,
