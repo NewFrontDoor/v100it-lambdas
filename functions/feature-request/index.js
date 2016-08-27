@@ -18,7 +18,7 @@ export default function (event, context) {
 			'organisation: ' + event.organisation,
 			'Email: ' + event.email,
 			'Url: ' + event.url,
-			'Type: ' + event.type,
+			'Request Type: ' + event.requestType,
 			'Description: ' + event.description
 		].join('\n')
 	}, context.done);
