@@ -15,7 +15,8 @@ export default function (event, context) {
 		subject: 'Documentation feedback from ' + event.email,
 		text: [
 			'Email: ' + event.email,
-			'Message: ' + event.message
+			'Message: ' + event.message,
+			'Document Url: ' + event.url
 		].join('\n')
 	}, context.done);
 }

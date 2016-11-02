@@ -13,7 +13,7 @@ export default function (event, context) {
 		replyTo: event.email,
 		from: 'contactus@vision100it.org',
 		to: 'contactus@vision100it.org',
-		subject: 'Feature request from ' + event.email,
+		subject: 'New client request from ' + event.email,
 		text: [
 			'Name: ' + event.name,
 			'Organisation: ' + event.organisation,
