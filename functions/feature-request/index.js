@@ -2,8 +2,8 @@ import AWS from 'aws-sdk';
 import nodemailer from 'nodemailer';
 import sesTransport from 'nodemailer-ses-transport';
 
-export default function (event, context) {
-	console.log('incoming: ', event);
+export default function (event, context, callback) {
+	var body = JSON.parse(event.body);
 
 	var transporter = nodemailer.createTransport(sesTransport({
 		ses: new AWS.SES()
@@ -12,14 +12,20 @@ export default function (event, context) {
 	transporter.sendMail({
 		from: 'jonno@vision100it.org',
 		to: 'x+84417606348384@mail.asana.com',
-		subject: 'Feature request from ' + event.email,
+		subject: 'Feature request from ' + body.email,
 		text: [
-			'Name: ' + event.name,
-			'organisation: ' + event.organisation,
-			'Email: ' + event.email,
-			'Url: ' + event.url,
-			'Request Type: ' + event.requestType,
-			'Description: ' + event.description
+			'Name: ' + body.name,
+			'organisation: ' + body.organisation,
+			'Email: ' + body.email,
+			'Url: ' + body.url,
+			'Request Type: ' + body.requestType,
+			'Description: ' + body.description
 		].join('\n')
-	}, context.done);
+	}, err => callback(err, {
+		statusCode: 200,
+		headers: {
+			'Access-Control-Allow-Origin': '*'
+		},
+		body: ''
+	}));
 }
