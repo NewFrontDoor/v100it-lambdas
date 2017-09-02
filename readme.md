@@ -7,6 +7,11 @@ The website has forms such as, contact, feedback, support request forms.
 To submit the forms the website needs somewhere to submit them to.
 AWS lambdas allow the website to have functionality normally needing a backend server.
 
+## Aim
+
+Have a collection of functions for receiving website events
+Easily deployed and maintained
+
 ## Tools
 
 - [`aws-sdk`](https://github.com/aws/aws-sdk-js)
