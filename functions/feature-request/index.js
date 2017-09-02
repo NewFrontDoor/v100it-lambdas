@@ -3,9 +3,9 @@ import nodemailer from 'nodemailer';
 import sesTransport from 'nodemailer-ses-transport';
 
 export default function (event, context, callback) {
-	var body = JSON.parse(event.body);
+	const body = JSON.parse(event.body);
 
-	var transporter = nodemailer.createTransport(sesTransport({
+	const transporter = nodemailer.createTransport(sesTransport({
 		ses: new AWS.SES()
 	}));
 

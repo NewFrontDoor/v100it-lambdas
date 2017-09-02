@@ -3,8 +3,11 @@ import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 
 export default {
-	entry: 'index.js',
-	format: 'cjs',
+	input: 'index.js',
+	output: {
+		file: 'handler.js',
+		format: 'cjs'
+	},
 	plugins: [
 		json(),
 		resolve({
@@ -22,6 +25,7 @@ export default {
 	external: [
 		'aws-sdk',
 		'buffer',
+		'child_process',
 		'crypto',
 		'dns',
 		'events',
@@ -30,6 +34,7 @@ export default {
 		'https',
 		'net',
 		'os',
+		'path',
 		'punycode',
 		'stream',
 		'string_decoder',
@@ -37,6 +42,5 @@ export default {
 		'url',
 		'util',
 		'zlib'
-	],
-	dest: 'handler.js'
+	]
 };
