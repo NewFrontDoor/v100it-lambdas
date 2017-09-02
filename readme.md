@@ -11,8 +11,8 @@ AWS lambdas allow the website to have functionality normally needing a backend s
 
 - [`aws-sdk`](https://github.com/aws/aws-sdk-js)
 - [`nodemailer`](https://nodemailer.com)
-- ['serverless'](https://serverless.com)
-- ['rollupjs'](https://rollupjs.org/)
+- [`serverless`](https://serverless.com)
+- [`rollupjs`](https://rollupjs.org/)
 
 ## Commands
 
