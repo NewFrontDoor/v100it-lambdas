@@ -55,7 +55,7 @@ package:
 
 defaultCors: &defaultCors
   origins:
-    - 'https://vision100it.org'
+    - '*'
   headers:
     - Content-Type
     - X-Amz-Date
