@@ -13,8 +13,8 @@ export default function (event, context, callback) {
 
 	transporter.sendMail({
 		replyTo: event.email,
-		from: 'contactus@vision100it.org',
-		to: 'contactus@vision100it.org',
+		from: 'contactus@newfrontdoor.org',
+		to: 'contactus@newfrontdoor.org',
 		subject: 'New client request from ' + body.email,
 		text: [
 			'Name: ' + body.name,
