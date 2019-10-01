@@ -1,30 +1,14 @@
-import AWS from 'aws-sdk';
-import nodemailer from 'nodemailer';
-import sesTransport from 'nodemailer-ses-transport';
+import createTransport from '../../lib/create-ses-transport';
+import sendGiveFeedbackMail from './send-give-feedback-mail';
 
-export default function (event, context, callback) {
-	console.log('incoming: ', event);
-
+export default async function(event, context, callback) {
+	const {email} = event;
 	const body = JSON.parse(event.body);
+	const [err, response] = await sendGiveFeedbackMail(
+		createTransport(),
+		email,
+		body
+	);
 
-	const transporter = nodemailer.createTransport(sesTransport({
-		ses: new AWS.SES()
-	}));
-
-	transporter.sendMail({
-		from: 'jonno@vision100it.org',
-		to: 'x+84417606348384@mail.asana.com',
-		subject: 'Documentation feedback from ' + body.email,
-		text: [
-			'Email: ' + body.email,
-			'Message: ' + body.message,
-			'Document Url: ' + body.url
-		].join('\n')
-	}, err => callback(err, {
-		statusCode: 200,
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		},
-		body: ''
-	}));
+	callback(err, response);
 }

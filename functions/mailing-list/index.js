@@ -1,30 +1,14 @@
-import AWS from 'aws-sdk';
-import nodemailer from 'nodemailer';
-import sesTransport from 'nodemailer-ses-transport';
+import createTransport from '../../lib/create-ses-transport';
+import sendMailingListMail from './send-mailing-list-mail';
 
-export default function (event, context, callback) {
-	console.log('incoming: ', event);
-
+export default async function(event, context, callback) {
+	const {email} = event;
 	const body = JSON.parse(event.body);
+	const [err, response] = await sendMailingListMail(
+		createTransport(),
+		email,
+		body
+	);
 
-	const transporter = nodemailer.createTransport(sesTransport({
-		ses: new AWS.SES()
-	}));
-
-	transporter.sendMail({
-		replyTo: body.email,
-		from: 'mailinglist@vision100it.org',
-		to: 'mailinglist@vision100it.org',
-		subject: 'Mailing list ' + body.email,
-		text: [
-			'Name: ' + body.name,
-			'Email: ' + body.email
-		].join('\n')
-	}, err => callback(err, {
-		statusCode: 200,
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		},
-		body: ''
-	}));
+	callback(err, response);
 }

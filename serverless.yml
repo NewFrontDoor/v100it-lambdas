@@ -11,20 +11,31 @@
 #
 # Happy Coding!
 
-service: v100it-lambdas
+service: nfd-lambdas
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: serverless.newfrontdoor.org
+    basePath: ''
+    certificateName: 'newfrontdoor.org'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs10.x
 
-  stage: dev
+  # stage: ${self:provider.stage}
   region: us-west-2
 
-  profile: v100
+  profile: newfrontdoor
 
 # you can add statements to the Lambda function's IAM Role here
   iamRoleStatements:
@@ -56,6 +67,8 @@ package:
 defaultCors: &defaultCors
   origins:
     - 'https://vision100it.org'
+    - 'https://newfrontdoor.org'
+    - 'http://localhost:*'
   headers:
     - Content-Type
     - X-Amz-Date
@@ -65,6 +78,14 @@ defaultCors: &defaultCors
   allowCredentials: false
 
 functions:
+  bible:
+    handler: handler.bible
+    events:
+      - http:
+          path: bible
+          method: get
+          cors: *defaultCors
+
   contactUs:
     handler: handler.contactUs
     events:

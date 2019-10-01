@@ -1,6 +1,8 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
+import bundleSize from 'rollup-plugin-bundle-size';
+import builtins from 'builtin-modules';
 
 export default {
 	input: 'index.js',
@@ -10,37 +12,11 @@ export default {
 	},
 	plugins: [
 		json(),
-		resolve({
-			jsnext: true,
-			main: true,
-			preferBuiltins: true
-		}),
+		resolve(),
 		commonjs({
-			sourceMap: false,
-			ignore: [
-				'aws-sdk'
-			]
-		})
+			sourceMap: false
+		}),
+		bundleSize()
 	],
-	external: [
-		'aws-sdk',
-		'buffer',
-		'child_process',
-		'crypto',
-		'dns',
-		'events',
-		'fs',
-		'http',
-		'https',
-		'net',
-		'os',
-		'path',
-		'punycode',
-		'stream',
-		'string_decoder',
-		'tls',
-		'url',
-		'util',
-		'zlib'
-	]
+	external: ['aws-sdk', 'aws-sdk/clients/ses', ...builtins]
 };

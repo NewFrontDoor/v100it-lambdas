@@ -32,6 +32,7 @@ Easily deployed and maintained
 
 ## Functions
 
+- `bible`
 - `contact-us`
 - `feature-request`
 - `give-feedback`

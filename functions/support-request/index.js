@@ -1,38 +1,14 @@
-import AWS from 'aws-sdk';
-import nodemailer from 'nodemailer';
-import sesTransport from 'nodemailer-ses-transport';
+import createTransport from '../../lib/create-ses-transport';
+import sendSupportRequestMail from './send-support-request-mail';
 
-export default function (event, context, callback) {
-	console.log('incoming: ', event);
-
+export default async function(event, context, callback) {
+	const {email} = event;
 	const body = JSON.parse(event.body);
+	const [err, response] = await sendSupportRequestMail(
+		createTransport(),
+		email,
+		body
+	);
 
-	const transporter = nodemailer.createTransport(sesTransport({
-		ses: new AWS.SES()
-	}));
-
-	transporter.sendMail({
-		from: 'jonno@vision100it.org',
-		to: 'x+84417606348384@mail.asana.com',
-		subject: 'Support request from ' + body.email,
-		text: [
-			'Name: ' + body.name,
-			'Organisation: ' + body.organisation,
-			'Email: ' + body.email,
-			'Url: ' + body.url,
-			'Request Type: ' + body.requestType,
-			'Severity: ' + body.severity,
-			'Summary: ' + body.summary,
-			'Details: ' + body.details,
-			'File Url: ' + body.fileUrl,
-			'Screenshot Url: ' + body.screenshotUrl,
-			'Additional details: ' + body.additional
-		].join('\n')
-	}, err => callback(err, {
-		statusCode: 200,
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		},
-		body: ''
-	}));
+	callback(err, response);
 }
