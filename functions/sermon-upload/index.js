@@ -2,19 +2,17 @@ const S3 = require("aws-sdk/clients/s3");
 const uniqid = require("uniqid");
 const mime = require("mime");
 
-/**
- * Use AWS SDK to create pre-signed POST data.
- * We also put a file size limit (100B - 10MB).
- * @param key
- * @param contentType
- * @returns {Promise<object>}
- */
+const headers = {
+  "Access-Control-Allow-Origin": "https://oneway.sanity.studio/dashboard",
+  "Access-Control-Allow-Credentials": true
+};
+
 const createPresignedPost = ({ key, contentType }) => {
   const s3 = new S3();
   const params = {
     Expires: 60,
     Bucket: "sermons.onewaymargate.org",
-    Conditions: [["content-length-range", 100, 10000000]], // 100Byte - 10MB
+    Conditions: [["content-length-range", 100, 10000000]],
     Fields: {
       "Content-Type": contentType,
       key
@@ -32,16 +30,7 @@ const createPresignedPost = ({ key, contentType }) => {
   });
 };
 
-/**
- * We need to respond with adequate CORS headers.
- * @type {{"Access-Control-Allow-Origin": string, "Access-Control-Allow-Credentials": boolean}}
- */
-const headers = {
-  "Access-Control-Allow-Origin": "https://oneway.sanity.studio/dashboard",
-  "Access-Control-Allow-Credentials": true
-};
-
-module.exports.getPresignedPostData = async ({ body }) => {
+export default async function(body) {
   try {
     const { name } = JSON.parse(body);
     const presignedPostData = await createPresignedPost({
