@@ -23,8 +23,8 @@ plugins:
 custom:
   customDomain:
     domainName: serverless.newfrontdoor.org
-    basePath: ''
-    certificateName: 'newfrontdoor.org'
+    basePath: ""
+    certificateName: "newfrontdoor.org"
     stage: ${self:provider.stage}
     createRoute53Record: true
 
@@ -37,7 +37,7 @@ provider:
 
   profile: newfrontdoor
 
-# you can add statements to the Lambda function's IAM Role here
+  # you can add statements to the Lambda function's IAM Role here
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -62,13 +62,14 @@ package:
   include:
     - handler.js
   exclude:
-    - '**/*'
+    - "**/*"
 
 defaultCors: &defaultCors
   origins:
-    - 'https://vision100it.org'
-    - 'https://newfrontdoor.org'
-    - 'http://localhost:*'
+    - "https://vision100it.org"
+    - "https://newfrontdoor.org"
+    - "http://localhost:*"
+    - "https://*.sanity.studio"
   headers:
     - Content-Type
     - X-Amz-Date
@@ -126,6 +127,13 @@ functions:
           method: post
           cors: *defaultCors
 
+  sermonUpload:
+    handler: handler.getPresignedPostData
+    events:
+      - http:
+          path: sermon-upload
+          method: post
+          cors: *defaultCors
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
