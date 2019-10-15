@@ -18,5 +18,10 @@ export default {
 		}),
 		bundleSize()
 	],
-	external: ['aws-sdk', 'aws-sdk/clients/ses', ...builtins]
+	external: [
+		'aws-sdk',
+		'aws-sdk/clients/ses',
+		'aws-sdk/clients/s3',
+		...builtins
+	]
 };
