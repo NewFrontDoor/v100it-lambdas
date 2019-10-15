@@ -9,7 +9,7 @@ test('sends email', async t => {
 		t.is(params.Bucket, 'bucket');
 		t.is(params.Expires, 60);
 		t.is(params.Fields['Content-Type'], 'image/png');
-		t.regex(params.Fields.key, /\w*some-file-name.png/);
+		t.regex(params.Fields.key, /.{16}_some-file-name.png/);
 		t.deepEqual(params.Conditions, [['content-length-range', 100, 100000000]]);
 	}
 
