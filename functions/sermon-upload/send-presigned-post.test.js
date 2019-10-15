@@ -4,7 +4,7 @@ import sendPresignedPost from './send-presigned-post';
 const name = 'some-file-name.png';
 const bucket = 'bucket';
 
-test('sends email', async t => {
+test('creates presigned post', async t => {
 	function createPresignedPost(params) {
 		t.is(params.Bucket, 'bucket');
 		t.is(params.Expires, 60);
