@@ -1,4 +1,4 @@
-import uniqid from 'uniqid';
+import cryptoRandomString from 'crypto-random-string';
 import mime from 'mime';
 import createPresignedPost from './create-presigned-post';
 
@@ -10,7 +10,7 @@ const cors = {
 export default async function(data, context, callback) {
 	const {name, bucket} = data;
 	const [error, presignedPostData] = await createPresignedPost({
-		key: `${uniqid()}_${name}`,
+		key: `${cryptoRandomString({length: 16, type: 'url-safe'})}_${name}`,
 		bucket,
 		contentType: mime.getType(name)
 	});

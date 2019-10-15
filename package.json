@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "aws-sdk": "^2.539.0",
+    "crypto-random-string": "^3.0.1",
     "got": "^9.6.0",
     "mime": "^2.4.4",
     "nodemailer": "^6.3.0",
-    "nodemailer-ses-transport": "^1.4.0",
-    "uniqid": "^5.0.3"
+    "nodemailer-ses-transport": "^1.4.0"
   },
   "devDependencies": {
     "ava": "^2.4.0",
