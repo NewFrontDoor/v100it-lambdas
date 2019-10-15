@@ -1,8 +1,8 @@
+import uniqid from 'uniqid';
+import mime from 'mime';
 import createPresignedPost from './create-presigned-post';
-const uniqid = require('uniqid');
-const mime = require('mime');
 
-const headers = {
+const cors = {
 	'Access-Control-Allow-Origin': '*',
 	'Access-Control-Allow-Credentials': false
 };
@@ -18,7 +18,7 @@ export default async function(data, context, callback) {
 	callback(
 		{
 			statusCode: 500,
-			headers,
+			headers: cors,
 			body: JSON.stringify({
 				error: true,
 				data: null,
@@ -27,7 +27,7 @@ export default async function(data, context, callback) {
 		},
 		{
 			statusCode: 200,
-			headers,
+			headers: cors,
 			body: JSON.stringify({
 				error: false,
 				data: presignedPostData,

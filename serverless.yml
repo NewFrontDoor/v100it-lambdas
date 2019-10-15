@@ -69,7 +69,6 @@ defaultCors: &defaultCors
     - "https://vision100it.org"
     - "https://newfrontdoor.org"
     - "http://localhost:*"
-    - "https://*.sanity.studio"
   headers:
     - Content-Type
     - X-Amz-Date
@@ -133,7 +132,17 @@ functions:
       - http:
           path: sermon-upload
           method: post
-          cors: *defaultCors
+          cors:
+            origins:
+              - https://*.sanity.studio
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
