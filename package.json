@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.539.0",
-    "got": "^9.6.0",
+    "got": "^10.5.7",
     "nodemailer": "^6.3.0",
     "nodemailer-ses-transport": "^1.4.0"
   },
