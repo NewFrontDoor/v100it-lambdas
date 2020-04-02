@@ -4,3 +4,4 @@ export {default as featureRequest} from './functions/feature-request';
 export {default as giveFeedback} from './functions/give-feedback';
 export {default as mailingList} from './functions/mailing-list';
 export {default as supportRequest} from './functions/support-request';
+export {default as getPresignedPostData} from './functions/sermon-upload';
