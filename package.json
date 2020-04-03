@@ -32,7 +32,7 @@
     "ava": "^2.4.0",
     "builtin-modules": "^3.1.0",
     "esm": "^3.2.25",
-    "nyc": "^15.0.0",
+    "nyc": "^15.0.1",
     "prettier": "^1.18.2",
     "prettier-plugin-package": "^0.3.1",
     "rollup": "^1.24.0",
