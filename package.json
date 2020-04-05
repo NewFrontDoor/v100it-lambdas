@@ -42,7 +42,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "serverless": "^1.54.0",
     "serverless-domain-manager": "^3.3.0",
-    "xo": "^0.25.3"
+    "xo": "^0.28.3"
   },
   "ava": {
     "babel": {
