@@ -40,7 +40,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "serverless": "^1.54.0",
+    "serverless": "^1.67.1",
     "serverless-domain-manager": "^3.3.0",
     "xo": "^0.25.3"
   },
