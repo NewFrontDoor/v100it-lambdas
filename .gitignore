@@ -1,3 +1,4 @@
+.now
 handler.js
 
 # package directories
@@ -7,5 +8,10 @@ jspm_packages
 # Serverless directories
 .serverless
 
+# nyc
 .nyc_output
 coverage
+
+# Environment Variables
+.env
+.env.build
