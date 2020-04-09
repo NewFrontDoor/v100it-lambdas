@@ -43,6 +43,10 @@ provider:
       Action:
         - ses:SendRawEmail
       Resource: "arn:aws:ses:us-west-2:*:*"
+    - Effect: "Allow"
+      Action:
+        - s3:*
+      Resource: "arn:aws:s3:::sermons.crossroadshobart.org"
 #    - Effect: "Allow"
 #      Action:
 #        - "s3:PutObject"
