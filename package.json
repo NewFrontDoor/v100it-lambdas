@@ -29,7 +29,7 @@
     "nodemailer-ses-transport": "^1.4.0"
   },
   "devDependencies": {
-    "ava": "^2.4.0",
+    "ava": "^3.7.0",
     "builtin-modules": "^3.1.0",
     "esm": "^3.2.25",
     "nyc": "^15.0.0",
