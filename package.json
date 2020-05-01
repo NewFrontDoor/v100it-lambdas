@@ -21,7 +21,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "aws-sdk": "^2.549.0",
+    "aws-sdk": "^2.668.0",
     "crypto-random-string": "^3.0.1",
     "got": "^9.6.0",
     "mime": "^2.4.4",
