@@ -41,7 +41,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "serverless": "^1.54.0",
-    "serverless-domain-manager": "^3.3.0",
+    "serverless-domain-manager": "^4.0.1",
     "xo": "^0.25.3"
   },
   "ava": {
